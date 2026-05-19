@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 19a6a60..e735f59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,7 +119,7 @@ else()
+ 	endif()
+ endif()
+ 
+-configure_file(${CMAKE_SOURCE_DIR}/version.hpp.cmakein ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}/version.hpp @ONLY)
++configure_file(${CMAKE_SOURCE_DIR}/version.hpp.cmakein ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}/version.hpp @ONLY)
+ configure_file(${CMAKE_SOURCE_DIR}/cmake/libm2kConfig.cmake ${CMAKE_BINARY_DIR}/cmake/${PROJECT_NAME}Config.cmake @ONLY)
+ 
+ # Set the default install path to /usr
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3245fab..65157f7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -157,7 +157,7 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
+ 
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/libm2k/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}"
+ 	FILES_MATCHING PATTERN "*.hpp")
+-install(FILES ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}/version.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
++install(FILES ${CMAKE_BINARY_DIR}/include/${PROJECT_NAME}/version.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+ 
+ # Add alias to libm2k as libm2k::libm2k
+ add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
